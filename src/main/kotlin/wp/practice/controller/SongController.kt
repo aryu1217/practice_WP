@@ -1,11 +1,13 @@
 package wp.practice.controller
 
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import wp.practice.model.Song
 import wp.practice.service.SongService
 
-@RestController
+@Controller
 class SongController(private val service: SongService) {
     val title = listOf("노래1", "노래2", "노래3")
 
@@ -24,7 +26,8 @@ class SongController(private val service: SongService) {
     }
 
     @GetMapping("/song/random")
-    fun getRandomSong(): String {
-        return "random"
+    fun getRandomSong(model: Model): String {
+        model.addAttribute("songTitle", service.getRandomSong().title)
+        return "random"  // "random"은 random.html 또는 random.jsp 파일을 찾는 뷰 이름
     }
 }
