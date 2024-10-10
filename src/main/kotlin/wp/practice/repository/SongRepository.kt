@@ -14,4 +14,9 @@ class SongRepository {
     )
 
     fun fetchSong() = songs
+    fun getSong(index: Int) = songs[index]
+//    fun getSize() = songs.size
+    val songsSize: Int
+        get() = songs.size //코틀린의 게터기능! 함수가아닌 변수처럼 사용가능하게 해줌
+
 }
