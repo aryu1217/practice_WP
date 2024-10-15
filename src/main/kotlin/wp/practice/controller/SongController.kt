@@ -27,7 +27,7 @@ class SongController(private val service: SongService) {
 
     @GetMapping("/song/random")
     fun getRandomSong(model: Model): String {
-        model.addAttribute("songTitle", service.getRandomSong().title)
+        model.addAttribute("song", service.getRandomSong())
         return "random"  // "random"은 random.html 또는 random.jsp 파일을 찾는 뷰 이름
     }
 }
